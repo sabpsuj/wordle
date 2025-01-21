@@ -1,0 +1,47 @@
+.word-input {
+
+  &__letters {
+    width: calc(5 * var(--letter-tile-size) + 4 * var(--letter-tile-spacing));
+    display: flex;
+    position: relative;
+  }
+
+  &__letter {
+    width: var(--letter-tile-size);
+    height: var(--letter-tile-size);
+    margin-right: var(--letter-tile-spacing);
+    font-size: 1.5em;
+    font-weight: 500;
+    color: #646cff;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: border-color 0.25s;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      border-color: #646cff;
+    }
+
+    &:focus,
+    &:focus-visible {
+      outline: 4px auto -webkit-focus-ring-color;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__input {
+    opacity: 0;
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+  }
+}

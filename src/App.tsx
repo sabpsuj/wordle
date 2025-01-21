@@ -1,34 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState } from "react";
 import './App.css'
+import { WordInput } from './components/WordInput'
+import { MAX_ATTEMPTS } from "./variables/variables";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [inputs, setInputs] = useState<{
+    isActive: boolean
+    isSolved: boolean
+  }[]>([{ isActive: true, isSolved: false }])
+
+  const currentWord = "apple"
+
+  const handleWordSubmit = (word: string) => {
+    console.log(word)
+    const currentInputIndex = inputs.length - 1
+    const newInputs = [...inputs]
+
+    if (currentWord.toUpperCase() === word) {
+      newInputs[currentInputIndex] = { isActive: false, isSolved: true }
+      setInputs(newInputs)
+    } else {
+      newInputs[currentInputIndex] = { isActive: false, isSolved: false }
+
+      if (inputs.length < MAX_ATTEMPTS) {
+        newInputs.push({ isActive: true, isSolved: false })
+        setInputs(newInputs)
+      }
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="app">
+      <h1 className="app__title">Word Game</h1>
+      {inputs.map((input, index) => (
+        <WordInput
+          key={index}
+          isActive={input.isActive}
+          isSolved={input.isSolved}
+          onSubmit={handleWordSubmit}
+        />
+      ))}
+    </div>
   )
 }
 
