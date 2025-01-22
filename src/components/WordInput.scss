@@ -1,4 +1,5 @@
 .word-input {
+  $root: &;
 
   &__letters {
     width: calc(5 * var(--letter-tile-size) + 4 * var(--letter-tile-spacing));
@@ -10,31 +11,78 @@
     width: var(--letter-tile-size);
     height: var(--letter-tile-size);
     margin-right: var(--letter-tile-spacing);
-    font-size: 1.5em;
-    font-weight: 500;
-    color: #646cff;
-    background-color: #1a1a1a;
-    border-radius: 8px;
-    border: 1px solid transparent;
     cursor: pointer;
-    transition: border-color 0.25s;
     position: relative;
     z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    &:hover {
-      border-color: #646cff;
-    }
-
-    &:focus,
-    &:focus-visible {
-      outline: 4px auto -webkit-focus-ring-color;
-    }
 
     &:last-child {
       margin-right: 0;
+    }
+
+    &::before,
+    &#{$root}__letter--state::after {
+      content: attr(data-letter);
+      position: absolute;
+      inset: 0;
+      border-radius: 8px;
+      transition: opacity 0.25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      font-weight: 500;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+      backface-visibility: hidden;
+    }
+
+    &::before {
+      background-color: #1a1a1a;
+    }
+
+
+    &--state {
+
+      @for $i from 1 through 5 {
+        &:nth-child(#{$i}) {
+          &::before,
+          &::after {
+            animation-delay: #{0.3 * $i}s;
+            animation-fill-mode: forwards;
+          }
+        }
+      }
+      &::before {
+        animation-name: flip-front;
+        animation-duration: 0.3s;
+      }
+
+      &::after {
+        transform: rotateY(180deg);
+        animation-name: flip-back;
+        animation-duration: 0.3s;
+      }
+
+      &_correct {
+        &::after {
+          background-color: green;
+          color: #fff;
+        }
+      }
+
+      &_wrong {
+        &::after {
+          background-color: red;
+          color: #1a1a1a;
+        }
+      }
+
+      &_misplaced {
+        &::after {
+          background-color: yellow;
+          color: #1a1a1a;
+        }
+      }
     }
   }
 
@@ -43,5 +91,23 @@
     position: absolute;
     inset: 0;
     z-index: 2;
+  }
+
+  @keyframes flip-front {
+    0% {
+      transform: rotateY(0deg);
+    }
+    100% {
+      transform: rotateY(180deg);
+    }
+  }
+
+  @keyframes flip-back {
+    0% {
+      transform: rotateY(180deg);
+    }
+    100% {
+      transform: rotateY(0deg);
+    }
   }
 }

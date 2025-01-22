@@ -1,13 +1,15 @@
 import { useState } from "react";
 import "./WordInput.scss";
+import type { LetterState } from "../types/LetterState.type";
 
 type WordInputProps = {
   onSubmit: (word: string) => void;
   isActive: boolean;
   isSolved: boolean;
+  lettersStates: [LetterState, LetterState, LetterState, LetterState, LetterState] | null;
 }
 
-export function WordInput({onSubmit, isActive, isSolved}: WordInputProps) {
+export function WordInput({onSubmit, isActive, isSolved, lettersStates}: WordInputProps) {
   const [wordLetters, setWordLetters] = useState<[string, string, string, string, string]>(["", "", "", "", ""]); 
   const [word, setWord] = useState("");
 
@@ -31,7 +33,11 @@ export function WordInput({onSubmit, isActive, isSolved}: WordInputProps) {
     <div className="word-input">
       <div className="word-input__letters">
         {wordLetters.map((letter, index) => (
-          <div key={index} className="word-input__letter">{letter}</div>
+          <div
+            key={index}
+            className={`word-input__letter${lettersStates ? " word-input__letter--state word-input__letter--state_" + lettersStates[index] : ""}`}
+            data-letter={letter}
+          />
         ))}
         <input
           className="word-input__input"
