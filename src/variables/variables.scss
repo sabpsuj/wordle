@@ -1,4 +1,15 @@
 :root {
   --letter-tile-size: 50px;
   --letter-tile-spacing: 5px;
+  --body-bg-color: #E4F0DA;
+  --main-text-color: #111;
+  --letter-tile-bg-color: #fee6e3;
+  --letter-tile-border-color: #111;
+  --letter-tile-shadow-color: #111;
+  --letter-tile-wrong-bg-color: #aec6cf;
+  --letter-tile-misplaced-bg-color: #ffb347;
+  --letter-tile-correct-bg-color: #77dd77;
+  --cursor-bg-color: #111;
+  --result-tile-bg-color-loose: #aec6cf;
+  --result-tile-bg-color-win: #77dd77;
 }

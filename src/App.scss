@@ -1,0 +1,29 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+
+  &__game-inputs {
+    .word-input:not(:last-child) {
+      margin-bottom: 7px;
+    }
+  }
+
+  &__result-tile {
+    border: 2px solid var(--letter-tile-border-color);
+    border-radius: 8px;
+    width: calc(5 * var(--letter-tile-size) + 4 * var(--letter-tile-spacing));
+    margin-top: 14px;
+
+    &--win {
+      background-color: var(--result-tile-bg-color-win);
+    }
+
+    &--loose {
+      background-color: var(--result-tile-bg-color-loose);
+    }
+  }
+}

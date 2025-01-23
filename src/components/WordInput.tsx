@@ -23,8 +23,9 @@ export function WordInput({onSubmit, isActive, isSolved, lettersStates}: WordInp
     setWordLetters(newWordLetters as [string, string, string, string, string]);
   }
 
-  const hadleButtonClick = () => {
-    if (isActive && word.length === 5) {
+  const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    console.log(event.key)
+    if (event.key.toLowerCase() === "enter" && isActive && word.length === 5) {
       onSubmit(word);
     }
   }
@@ -37,22 +38,20 @@ export function WordInput({onSubmit, isActive, isSolved, lettersStates}: WordInp
             key={index}
             className={`word-input__letter${lettersStates ? " word-input__letter--state word-input__letter--state_" + lettersStates[index] : ""}`}
             data-letter={letter}
-          />
+          >
+            <span className="word-input__letter-side--front">{letter}</span>
+            <span className="word-input__letter-side--back">{letter}</span>
+          </div>
+
         ))}
         <input
           className="word-input__input"
           type="text"
           onChange={handleInputChange}
           value={word}
+          onKeyUp={handleKeyUp}
         />
       </div>
-      <button
-        className={`word-input__submit${!isActive && !isSolved ? " word-input__submit--fail" : ""}${!isActive && isSolved ? " word-input__submit--success" : ""}`}
-        disabled={!isActive || word.length !== 5}
-        onClick={hadleButtonClick}
-      >
-        {!isActive && !isSolved ? "Fail" : !isActive && isSolved ? "Solved" : "Submit"}
-      </button>
     </div>
   );
 }
