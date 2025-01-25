@@ -5,11 +5,10 @@ import type { LetterState } from "../types/LetterState.type";
 type WordInputProps = {
   onSubmit: (word: string) => void;
   isActive: boolean;
-  isSolved: boolean;
   lettersStates: [LetterState, LetterState, LetterState, LetterState, LetterState] | null;
 }
 
-export function WordInput({onSubmit, isActive, isSolved, lettersStates}: WordInputProps) {
+export function WordInput({onSubmit, isActive, lettersStates}: WordInputProps) {
   const [wordLetters, setWordLetters] = useState<[string, string, string, string, string]>(["", "", "", "", ""]); 
   const [word, setWord] = useState("");
 
