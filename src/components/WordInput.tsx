@@ -24,7 +24,6 @@ export function WordInput({onSubmit, isActive, isSolved, lettersStates}: WordInp
   }
 
   const handleKeyUp = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    console.log(event.key)
     if (event.key.toLowerCase() === "enter" && isActive && word.length === 5) {
       onSubmit(word);
     }
@@ -45,6 +44,7 @@ export function WordInput({onSubmit, isActive, isSolved, lettersStates}: WordInp
 
         ))}
         <input
+          autoFocus
           className="word-input__input"
           type="text"
           onChange={handleInputChange}
