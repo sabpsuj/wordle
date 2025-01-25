@@ -1,6 +1,6 @@
 {
   "name": "wordle",
-  "homepage": "https://wordgame.sabinapsuj.dev",
+  "homepage": "https://wordle.sabinapsuj.dev",
   "private": false,
   "version": "0.0.0",
   "type": "module",
