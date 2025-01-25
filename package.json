@@ -5,9 +5,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "deploy": "gh-pages -d dist",
     "dev": "vite",
-    "build": "tsc -b && vite build && node createCNAME.js",
+    "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
