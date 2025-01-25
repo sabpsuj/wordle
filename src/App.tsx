@@ -76,7 +76,6 @@ function App() {
             <WordInput
               key={input.id}
               isActive={input.isActive}
-              isSolved={input.isSolved}
               onSubmit={handleWordSubmit}
               lettersStates={input.lettersStates}
             />
