@@ -21,12 +21,19 @@
       text-transform: uppercase;
       margin: 0 5px 0 2px;
       font-size: 27px;
+      transform: rotate(5deg);
     }
   }
 
   &__game-inputs {
     .word-input:not(:last-child) {
       margin-bottom: 7px;
+    }
+
+    &--shake {
+      .word-input:last-child {
+        animation: shake 0.5s;
+      }
     }
   }
 
@@ -61,4 +68,31 @@
     bottom: 10px;
     font-size: 11px;
   }
+}
+
+@keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(20px);
+  }
+
+  40% {
+    transform: translateX(-15px);
+  }
+
+  60% {
+    transform: translateX(10px);
+  }
+
+  80% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+
 }

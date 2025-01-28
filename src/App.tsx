@@ -4,7 +4,7 @@ import { WordInput } from './components/WordInput'
 import { MAX_ATTEMPTS } from "./variables/variables";
 import type { LetterState } from "./types/LetterState.type";
 import { useRandomString } from './hooks/use-random-string'
-import { getRandomWord } from "./services/words.service";
+import { getRandomWord, checkIfWordExist } from "./services/words.service";
 
 function App() {
   const [inputs, setInputs] = useState<{
@@ -15,19 +15,41 @@ function App() {
   }[]>([{id: useRandomString(), isActive: true, isSolved: false, lettersStates: null }])
 
   const [result, setResult] = useState<"win" | "loose" | null>(null)
-
   const [currentWord, setCurrentWord] = useState<string | null>(null)
+  const [solutionCheckInProgress, setSolutionCheckInProgress] = useState(false)
+  const [shakeErrorClass, setShakeErrorClass] = useState(false)
 
   useEffect(() => {
     if (!currentWord) {
-      const word = getRandomWord()
-      setCurrentWord(word)
+      getRandomWord()
+      .then(word => {
+        setCurrentWord(word)
+      })
     }
   }, [currentWord])
 
-  const handleWordSubmit = (word: string) => {
+  const shakeError = () => {
+    setShakeErrorClass(true)
+
+    setTimeout(() => {
+      setShakeErrorClass(false)
+    }, 500)
+  }
+
+  const handleWordSubmit = async (word: string) => { 
+    if (solutionCheckInProgress) {
+      return
+    }
+    setSolutionCheckInProgress(true)
     const currentInputIndex = inputs.length - 1
     const newInputs = [...inputs]
+
+    const isWordCorrect = await checkIfWordExist(word)
+    setSolutionCheckInProgress(false)
+    if (!isWordCorrect) {
+      shakeError()
+      return
+    }
 
     if (currentWord?.toUpperCase() === word) {
       newInputs[currentInputIndex] = {id: newInputs[currentInputIndex].id, isActive: false, isSolved: true, lettersStates: ["correct", "correct", "correct", "correct", "correct"] }
@@ -64,14 +86,16 @@ function App() {
   const handleGameRestart = () => {
     setInputs([{id: useRandomString(), isActive: true, isSolved: false, lettersStates: null }])
     setResult(null)
-    const word = getRandomWord()
-    setCurrentWord(word)
+    getRandomWord()
+    .then(word => {
+      setCurrentWord(word)
+    })
   }
   return (
     <div className="app">
-      <h1 className="app__title">w<span className="app__title--special-letter">o</span>rd game</h1>
+      <h1 className="app__title">w<span className="app__title--special-letter">o</span>rdle</h1>
       <main className="app__game-board">
-        <div className="app__game-inputs">
+        <div className={`app__game-inputs${shakeErrorClass ? " app__game-inputs--shake" : ""}`}>
           {inputs.map(input => (
             <WordInput
               key={input.id}
