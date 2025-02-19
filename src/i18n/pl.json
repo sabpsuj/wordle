@@ -1,0 +1,10 @@
+{
+  "failMessage" : "Nie tym razem... Spróbuj ponownie!",
+  "winMessage": "Udało Ci się! Brawo!",
+  "elo": "Elo mordo!",
+  "playAgain": "Od nowa",
+  "language": {
+    "english": "EN",
+    "polish": "PL"
+  }
+}

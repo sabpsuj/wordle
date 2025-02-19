@@ -3,10 +3,16 @@ import './App.scss'
 import { WordInput } from './components/WordInput'
 import { MAX_ATTEMPTS } from "./variables/variables";
 import type { LetterState } from "./types/LetterState.type";
+import type { Languages } from "./types/Languages.type";
 import { useRandomString } from './hooks/use-random-string'
 import { getRandomWord, checkIfWordExist } from "./services/words.service";
+import { useTranslation } from "react-i18next";
+import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import plFlag from "./assets/pl.svg";
+import enFlag from "./assets/en.svg";
 
 function App() {
+  const { t, i18n } = useTranslation();
   const [inputs, setInputs] = useState<{
     id: string
     isActive: boolean
@@ -20,8 +26,12 @@ function App() {
   const [shakeErrorClass, setShakeErrorClass] = useState(false)
 
   useEffect(() => {
+    handleGameRestart()
+  }, [i18n.language])
+
+  useEffect(() => {
     if (!currentWord) {
-      getRandomWord()
+      getRandomWord(i18n.language as Languages)
       .then(word => {
         setCurrentWord(word)
       })
@@ -44,7 +54,7 @@ function App() {
     const currentInputIndex = inputs.length - 1
     const newInputs = [...inputs]
 
-    const isWordCorrect = await checkIfWordExist(word)
+    const isWordCorrect = await checkIfWordExist(word, i18n.language as Languages)
     setSolutionCheckInProgress(false)
     if (!isWordCorrect) {
       shakeError()
@@ -86,14 +96,16 @@ function App() {
   const handleGameRestart = () => {
     setInputs([{id: useRandomString(), isActive: true, isSolved: false, lettersStates: null }])
     setResult(null)
-    getRandomWord()
+    getRandomWord(i18n.language as Languages)
     .then(word => {
       setCurrentWord(word)
     })
   }
+
   return (
     <div className="app">
-      <h1 className="app__title">w<span className="app__title--special-letter">o</span>rdle</h1>
+      <h1 className="app__title">w<span className="app__title--special-letter">o</span>rdle {i18n.language === "pl" ? <img className="app__flag" src={plFlag} alt={t("language.polish")} />  : <img className="app__flag" src={enFlag} alt={t("language.english")} />}</h1>
+      <LanguageSwitcher />
       <main className="app__game-board">
         <div className={`app__game-inputs${shakeErrorClass ? " app__game-inputs--shake" : ""}`}>
           {inputs.map(input => (
@@ -106,14 +118,14 @@ function App() {
           ))}
         </div>
         {result && result === "loose" && (
-          <div className="app__result-tile app__result-tile--loose">Not this time... But you can try again.</div>
+          <div className="app__result-tile app__result-tile--loose">{t("failMessage")}</div>
         )}
         {result && result === "win" && (
-          <div className="app__result-tile app__result-tile--win">You did that! Great!</div>
+          <div className="app__result-tile app__result-tile--win">{t("winMessage")}</div>
         )}
 
         {result && (
-          <button className="app__restart-button" onClick={handleGameRestart}>Play again</button>
+          <button className="app__restart-button" onClick={handleGameRestart}>{t("playAgain")}</button>
         )}
       </main>
       <footer className="app__footer">Made with 🐸 by <a href="https://sabinapsuj.dev/" target="_blank">Sabina Psuj</a></footer>

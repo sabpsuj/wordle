@@ -1,0 +1,43 @@
+.language-switcher {
+  $root: &;
+
+  background-color: var(--letter-tile-bg-color);
+  height: var(--letter-tile-size)/2;
+  border: 2px solid var(--letter-tile-border-color);
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 3px 3px 0px var(--letter-tile-border-color);
+  margin-bottom: 20px;
+
+  &__button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    height: 100%;
+    margin: 0;
+    padding: 8px;
+    font-weight: 600;
+
+    &--active {
+      position: relative;
+      z-index: 1;
+
+      &::before {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0;
+        right: 0;
+        background-color: var(--active-switch-bg-color);
+        border-radius: 6px;
+        z-index: -1;
+      }
+    }
+
+    img {
+      width: 20px;
+      margin-right: 4px;
+    }
+  }
+}
