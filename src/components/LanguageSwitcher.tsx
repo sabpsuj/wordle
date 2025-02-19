@@ -1,24 +1,33 @@
-import React from "react"
 import { useTranslation } from "react-i18next";
 import type { Languages } from "../types/Languages.type";
+import "./LanguageSwitcher.scss";
 
-type LanguageSwitcherProps = {
-  value: Languages
-  onChange: (value: "pl" | "en") => void
-}
 
-export function LanguageSwitcher ({value, onChange}: LanguageSwitcherProps) {
-  const { i18n } = useTranslation();
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedLanguage = event?.target.value as Languages
-    onChange(selectedLanguage)
-    i18n.changeLanguage(selectedLanguage)
+export function LanguageSwitcher () {
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = (language: Languages) => {
+    i18n.changeLanguage(language)
   }
 
   return (
-    <select value={value} onChange={handleChange}>
-      <option value="pl">PL</option>
-      <option value="en">EN</option>
-    </select>
+    <div className="language-switcher" role="group" aria-label="Language Switcher">
+      <button
+        className={`language-switcher__button${i18n.language === "pl" ? " language-switcher__button--active" : ""}`}
+        onClick={() => changeLanguage("pl")}
+        aria-label="Switch to English"
+        aria-pressed={i18n.language === "pl"}
+      >
+        <span>{t("language.polish")}</span>
+      </button>
+      <button
+        className={`language-switcher__button${i18n.language === "en" ? " language-switcher__button--active" : ""}`}
+        onClick={() => changeLanguage("en")}
+        aria-label="Switch to Polish"
+        aria-pressed={i18n.language === "en"}
+      >
+        <span>{t("language.english")}</span>
+      </button>
+    </div>
   )
 }

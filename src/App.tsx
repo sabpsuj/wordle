@@ -8,6 +8,8 @@ import { useRandomString } from './hooks/use-random-string'
 import { getRandomWord, checkIfWordExist } from "./services/words.service";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
+import plFlag from "./assets/pl.svg";
+import enFlag from "./assets/en.svg";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -22,7 +24,6 @@ function App() {
   const [currentWord, setCurrentWord] = useState<string | null>(null)
   const [solutionCheckInProgress, setSolutionCheckInProgress] = useState(false)
   const [shakeErrorClass, setShakeErrorClass] = useState(false)
-  const [language, setLanguage] = useState<Languages>("en")
 
   useEffect(() => {
     handleGameRestart()
@@ -103,9 +104,8 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className="app__title">w<span className="app__title--special-letter">o</span>rdle</h1>
-      <LanguageSwitcher value={language} onChange={setLanguage} />
-      <p>{t("elo")}</p>
+      <h1 className="app__title">w<span className="app__title--special-letter">o</span>rdle {i18n.language === "pl" ? <img className="app__flag" src={plFlag} alt={t("language.polish")} />  : <img className="app__flag" src={enFlag} alt={t("language.english")} />}</h1>
+      <LanguageSwitcher />
       <main className="app__game-board">
         <div className={`app__game-inputs${shakeErrorClass ? " app__game-inputs--shake" : ""}`}>
           {inputs.map(input => (
