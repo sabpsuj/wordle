@@ -34,6 +34,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    img {
+      width: 14px;
+      height: auto;
+    }
   }
 
   &__children {
