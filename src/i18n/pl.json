@@ -6,5 +6,12 @@
   "language": {
     "english": "EN",
     "polish": "PL"
-  }
+  },
+  "howToPlay": "Jak grać?",
+  "quessInSixTries": "Masz 6 podejść by odgadnąć słowo.",
+  "validFiveLetterWord": "Każde słowo musi być 5-literowe i istniejące w słowniku języka polskiego.",
+  "colorHints": "Kolor liter zmienia się po każdej próbie dając ci wskazówki.",
+  "examples": "Przykłady",
+  "correctLetterExample": "Prawidłowa litera w odpowiednim miejscu.",
+  "wrongPlacedExample": "Prawidłowa litera w złym miejscu."
 }

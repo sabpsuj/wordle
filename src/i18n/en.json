@@ -6,5 +6,12 @@
   "language": {
     "english": "EN",
     "polish": "PL"
-  }
+  },
+  "howToPlay": "How to play?",
+  "quessInSixTries": "You have six attempts to identify the word.",
+  "validFiveLetterWord": "Each guess must be a valid 5-letter word.",
+  "colorHints": "The color of the tiles will change to show how close your guess was to the word.",
+  "examples": "Examples",
+  "correctLetterExample": "Below you can see the correct letter example both place and value.",
+  "wrongPlacedExample": "Below you can see the correct letter but placed wrongly."
 }

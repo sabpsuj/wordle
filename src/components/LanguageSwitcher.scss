@@ -1,13 +1,13 @@
 .language-switcher {
   $root: &;
 
-  background-color: var(--letter-tile-bg-color);
+  background-color: #fff;
   height: var(--letter-tile-size)/2;
   border: 2px solid var(--letter-tile-border-color);
   border-radius: 8px;
   position: relative;
   box-shadow: 3px 3px 0px var(--letter-tile-border-color);
-  margin-bottom: 20px;
+  overflow: hidden;
 
   &__button {
     border: 0;
@@ -17,21 +17,25 @@
     margin: 0;
     padding: 8px;
     font-weight: 600;
+    color: rgb(175, 173, 173);
+    width: 40px;
 
     &--active {
       position: relative;
       z-index: 1;
+      color: var(--main-text-color);
 
       &::before {
         content: "";
         position: absolute;
         height: 100%;
         width: 100%;
-        top: 0;
+        top: -1px;
         right: 0;
-        background-color: var(--active-switch-bg-color);
+        background-color: var(--letter-tile-bg-color);
         border-radius: 6px;
         z-index: -1;
+        border: 1px solid var(--letter-tile-border-color);
       }
     }
 

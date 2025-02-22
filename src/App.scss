@@ -11,10 +11,25 @@
     column-gap: 10px;
   }
 
+  &__subheader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(5 * var(--letter-tile-size) + 4 * var(--letter-tile-spacing));
+    margin-bottom: 20px;
+  }
+
+  &__qa {
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    margin: 0;
+  }
+
   &__title {
     font-size: 44px;
     flex: 1 0 auto;
-    position: relative;
+    margin: 12px 0;
 
     &--special-letter {
       display: inline-block;
@@ -30,15 +45,6 @@
       font-size: 27px;
       transform: rotate(5deg);
     }
-  }
-
-  &__flag {
-    width: 20px;
-    position: absolute;
-    top: 15px;
-    left: -10px;
-    rotate: -45deg;
-    border: 1px solid #111;
   }
 
   &__game-inputs {

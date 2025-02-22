@@ -8,8 +8,8 @@ import { useRandomString } from './hooks/use-random-string'
 import { getRandomWord, checkIfWordExist } from "./services/words.service";
 import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
-import plFlag from "./assets/pl.svg";
-import enFlag from "./assets/en.svg";
+import { Modal } from "./components/Modal";
+import { WordInputExample } from "./components/WordInputExample";
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -24,6 +24,8 @@ function App() {
   const [currentWord, setCurrentWord] = useState<string | null>(null)
   const [solutionCheckInProgress, setSolutionCheckInProgress] = useState(false)
   const [shakeErrorClass, setShakeErrorClass] = useState(false)
+  const [howToModalIsOpen, setHowToModalIsOpen] = useState(false)
+  const [warningModalIsOpen, setWarningModalIsOpen] = useState(false)
 
   useEffect(() => {
     handleGameRestart()
@@ -104,8 +106,10 @@ function App() {
 
   return (
     <div className="app">
-      <h1 className="app__title">w<span className="app__title--special-letter">o</span>rdle {i18n.language === "pl" ? <img className="app__flag" src={plFlag} alt={t("language.polish")} />  : <img className="app__flag" src={enFlag} alt={t("language.english")} />}</h1>
-      <LanguageSwitcher />
+      <h1 className="app__title">w<span className="app__title--special-letter">o</span>rdle</h1>
+      <div className="app__subheader">
+        <LanguageSwitcher /> <p className="app__qa" onClick={() => setHowToModalIsOpen(true)}>{t("howToPlay")}</p>
+      </div>
       <main className="app__game-board">
         <div className={`app__game-inputs${shakeErrorClass ? " app__game-inputs--shake" : ""}`}>
           {inputs.map(input => (
@@ -129,6 +133,22 @@ function App() {
         )}
       </main>
       <footer className="app__footer">Made with 🐸 by <a href="https://sabinapsuj.dev/" target="_blank">Sabina Psuj</a></footer>
+      {howToModalIsOpen && <Modal closeModal={() => setHowToModalIsOpen(false)}>
+        <h3>{t("howToPlay")}</h3>
+        <p>{t("quessInSixTries")}</p>
+        <ul>
+          <li>{t("validFiveLetterWord")}</li>
+          <li>{t("colorHints")}</li>
+        </ul>
+        <h4>{t("examples")}</h4>
+        <p>{t("correctLetterExample")}</p>
+        <WordInputExample word="apple" correctLetterIndex={3} />
+        <p>{t("wrongPlacedExample")}</p>
+        <WordInputExample word="bread" misplacedLetterIndex={1} />
+      </Modal>}
+      {warningModalIsOpen && <Modal closeModal={() => setWarningModalIsOpen(false)}>
+        <p>uwaga ryje</p>
+      </Modal>}
     </div>
   )
 }
