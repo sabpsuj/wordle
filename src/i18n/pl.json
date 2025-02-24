@@ -14,8 +14,8 @@
   "examples": "Przykłady",
   "correctLetterExample": "Prawidłowa litera w odpowiednim miejscu.",
   "wrongPlacedExample": "Prawidłowa litera w złym miejscu.",
-  "changeLanguageWarning": "Twoja aktualna gra zostanie zresetowana. Czy chcesz kontynuować?",
-  "changeLanguageWarningTitle": "Uwaga! Czy na pewno chcesz zmienić język?",
+  "changeLanguageWarning": "Twoja aktualna gra zostanie zresetowana. Czy na pewno chcesz zmienić język?",
+  "changeLanguageWarningTitle": "Uwaga!",
   "yes": "tak",
   "no": "nie"
 }

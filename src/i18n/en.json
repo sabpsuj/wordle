@@ -14,8 +14,8 @@
   "examples": "Examples",
   "correctLetterExample": "Below you can see the correct letter example both place and value.",
   "wrongPlacedExample": "Below you can see the correct letter but placed wrongly.",
-  "changeLanguageWarning": "Your current game will be reset. Do you want to proceed?",
-  "changeLanguageWarningTitle": "Warning! Are you sure you want to change the language?",
+  "changeLanguageWarning": "Your current game will be reset. Are you sure you want to change the language?",
+  "changeLanguageWarningTitle": "Warning!",
   "yes": "yes",
   "no": "no"
 }
