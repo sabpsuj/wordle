@@ -38,10 +38,24 @@
         border: 1px solid var(--letter-tile-border-color);
       }
     }
+  }
 
-    img {
-      width: 20px;
-      margin-right: 4px;
-    }
+  &__modal-buttons {
+    display: flex;
+    column-gap: 8px;
+    justify-content: space-between;
+  }
+
+  &__modal-button {
+    width: 50%;
+    height: var(--letter-tile-size)/2;
+    border: 2px solid var(--letter-tile-border-color);
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 8px;
+    font-weight: 600;
+    box-shadow: 3px 3px 0px var(--letter-tile-border-color);
+    text-transform: uppercase;
+    cursor: pointer;
   }
 }

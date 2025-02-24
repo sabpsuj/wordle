@@ -13,5 +13,9 @@
   "colorHints": "The color of the tiles will change to show how close your guess was to the word.",
   "examples": "Examples",
   "correctLetterExample": "Below you can see the correct letter example both place and value.",
-  "wrongPlacedExample": "Below you can see the correct letter but placed wrongly."
+  "wrongPlacedExample": "Below you can see the correct letter but placed wrongly.",
+  "changeLanguageWarning": "Your current game will be reset. Do you want to proceed?",
+  "changeLanguageWarningTitle": "Warning! Are you sure you want to change the language?",
+  "yes": "yes",
+  "no": "no"
 }

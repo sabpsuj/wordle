@@ -25,7 +25,6 @@ function App() {
   const [solutionCheckInProgress, setSolutionCheckInProgress] = useState(false)
   const [shakeErrorClass, setShakeErrorClass] = useState(false)
   const [howToModalIsOpen, setHowToModalIsOpen] = useState(false)
-  const [warningModalIsOpen, setWarningModalIsOpen] = useState(false)
 
   useEffect(() => {
     handleGameRestart()
@@ -104,11 +103,29 @@ function App() {
     })
   }
 
+  const HowToModalContent = () => {
+    return (
+      <>
+        <h3>{t("howToPlay")}</h3>
+        <p>{t("quessInSixTries")}</p>
+        <ul>
+          <li>{t("validFiveLetterWord")}</li>
+          <li>{t("colorHints")}</li>
+        </ul>
+        <h4>{t("examples")}</h4>
+        <p>{t("correctLetterExample")}</p>
+        <WordInputExample word="apple" correctLetterIndex={3} />
+        <p>{t("wrongPlacedExample")}</p>
+        <WordInputExample word="bread" misplacedLetterIndex={1} />
+      </>
+    )
+  }
+
   return (
     <div className="app">
       <h1 className="app__title">w<span className="app__title--special-letter">o</span>rdle</h1>
       <div className="app__subheader">
-        <LanguageSwitcher /> <p className="app__qa" onClick={() => setHowToModalIsOpen(true)}>{t("howToPlay")}</p>
+        <LanguageSwitcher showWarningModal={inputs.length > 1} /> <p className="app__qa" onClick={() => setHowToModalIsOpen(true)}>{t("howToPlay")}</p>
       </div>
       <main className="app__game-board">
         <div className={`app__game-inputs${shakeErrorClass ? " app__game-inputs--shake" : ""}`}>
@@ -134,20 +151,7 @@ function App() {
       </main>
       <footer className="app__footer">Made with 🐸 by <a href="https://sabinapsuj.dev/" target="_blank">Sabina Psuj</a></footer>
       {howToModalIsOpen && <Modal closeModal={() => setHowToModalIsOpen(false)}>
-        <h3>{t("howToPlay")}</h3>
-        <p>{t("quessInSixTries")}</p>
-        <ul>
-          <li>{t("validFiveLetterWord")}</li>
-          <li>{t("colorHints")}</li>
-        </ul>
-        <h4>{t("examples")}</h4>
-        <p>{t("correctLetterExample")}</p>
-        <WordInputExample word="apple" correctLetterIndex={3} />
-        <p>{t("wrongPlacedExample")}</p>
-        <WordInputExample word="bread" misplacedLetterIndex={1} />
-      </Modal>}
-      {warningModalIsOpen && <Modal closeModal={() => setWarningModalIsOpen(false)}>
-        <p>uwaga ryje</p>
+        <HowToModalContent />
       </Modal>}
     </div>
   )
