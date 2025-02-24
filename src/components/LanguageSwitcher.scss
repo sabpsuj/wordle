@@ -57,5 +57,14 @@
     box-shadow: 3px 3px 0px var(--letter-tile-border-color);
     text-transform: uppercase;
     cursor: pointer;
+    color: var(--main-text-color);
+
+    &--accept {
+      background-color: var(--letter-tile-misplaced-bg-color);
+    }
+
+    &--decline {
+      background-color: var(--letter-tile-wrong-bg-color);
+    }
   }
 }

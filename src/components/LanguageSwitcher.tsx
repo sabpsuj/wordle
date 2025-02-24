@@ -26,8 +26,8 @@ export function LanguageSwitcher ({showWarningModal}: LanguageSwitcherProps) {
         <h4>{t("changeLanguageWarningTitle")}</h4>
         <p>{t("changeLanguageWarning")}</p>
         <div className="language-switcher__modal-buttons">
-          <button className="language-switcher__modal-button" onClick={() => changeLanguage(languageToBeChosen)}>{t("yes")}</button>
-          <button className="language-switcher__modal-button" onClick={() => setWarningModalIsOpen(false)}>{t("no")}</button>
+          <button className="language-switcher__modal-button language-switcher__modal-button--accept" onClick={() => changeLanguage(languageToBeChosen)}>{t("yes")}</button>
+          <button className="language-switcher__modal-button language-switcher__modal-button--decline" onClick={() => setWarningModalIsOpen(false)}>{t("no")}</button>
         </div>
       </>
     )
