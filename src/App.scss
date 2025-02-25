@@ -89,6 +89,22 @@
     position: absolute;
     bottom: 10px;
     font-size: 11px;
+    color:  #7e7e7e;
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+
+    button {
+      font-size: 11px;
+      background: transparent;
+      color:  #7e7e7e;
+      border: none;
+      cursor: pointer;
+    }
+
+    a {
+      color:  #7e7e7e;
+    }
   }
 }
 

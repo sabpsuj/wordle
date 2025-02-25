@@ -1,0 +1,50 @@
+.privacy-modal {
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  position: fixed;
+  width: 85%;
+  bottom: 20px;
+  right: 50%;
+  transform: translateX(50%);
+  padding: 24px;
+  text-align: center;
+
+  &__content {
+    color: #111;
+    font-size: 14px;
+    margin-bottom: 12px;
+
+    a {
+      color: #111;
+      font-weight: 6PrivacyModal.00;
+    }
+  }
+
+  &__button {
+    background-color: #E4F0DA;
+    border: 2px solid #111;
+    border-radius: 8px;
+    color: #111;
+    padding: 6px;
+    position: relative;
+    transform-style: preserve-3d;
+    cursor: pointer;
+
+    &:after {
+      content: "";
+      background-color: #111;
+      border-radius: 8px;
+      display: block;
+      height: 100%;
+      left: 0;
+      width: 100%;
+      position: absolute;
+      top: -2px;
+      transform: translate(6px, 6px) translateZ(-1px);
+      transition: transform .2s ease-out;
+    }
+  }
+}
+  

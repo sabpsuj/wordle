@@ -10,6 +10,9 @@ import { useTranslation } from "react-i18next";
 import { LanguageSwitcher } from "./components/LanguageSwitcher";
 import { Modal } from "./components/Modal";
 import { WordInputExample } from "./components/WordInputExample";
+import { PrivacyModal } from "./components/PrivacyModal";
+
+const privacyAccepted = localStorage.getItem("privacyAccepted")
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -25,6 +28,16 @@ function App() {
   const [solutionCheckInProgress, setSolutionCheckInProgress] = useState(false)
   const [shakeErrorClass, setShakeErrorClass] = useState(false)
   const [howToModalIsOpen, setHowToModalIsOpen] = useState(false)
+  const [isPrivacyModalOpen, setIsPrivacyModalOpen] = useState(!privacyAccepted)
+
+  const handleClosePrivacyModal = () => {
+    setIsPrivacyModalOpen(false)
+    localStorage.setItem("privacyAccepted", "true")
+  }
+
+  const handleOpenPrivacyModal = () => {
+    setIsPrivacyModalOpen(true)
+  }
 
   useEffect(() => {
     handleGameRestart()
@@ -149,10 +162,11 @@ function App() {
           <button className="app__restart-button" onClick={handleGameRestart}>{t("playAgain")}</button>
         )}
       </main>
-      <footer className="app__footer">Made with 🐸 by <a href="https://sabinapsuj.dev/" target="_blank">Sabina Psuj</a></footer>
+      <footer className="app__footer"><div>Made with 🐸 by <a href="https://sabinapsuj.dev/" target="_blank">Sabina Psuj</a></div><button onClick={handleOpenPrivacyModal}>Privacy Info</button></footer>
       {howToModalIsOpen && <Modal closeModal={() => setHowToModalIsOpen(false)}>
         <HowToModalContent />
       </Modal>}
+      <PrivacyModal isOpen={isPrivacyModalOpen} onClose={handleClosePrivacyModal} />
     </div>
   )
 }
