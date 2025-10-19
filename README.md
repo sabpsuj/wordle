@@ -8,5 +8,4 @@ Welcome to the Wordle project! This is a simple implementation of the popular wo
 - Feedback on each guess
 - Endless fun! For free!
 
-Play online at [wordgame.sabinapsuj.dev](https://wordgame.sabinapsuj.dev).
-
+Play online at [wordle.sabinapsuj.dev/](https://wordle.sabinapsuj.dev/).
