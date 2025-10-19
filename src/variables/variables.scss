@@ -1,7 +1,7 @@
 :root {
   --letter-tile-size: 50px;
   --letter-tile-spacing: 5px;
-  --body-bg-color: #E4F0DA;
+  --body-bg-color: #e4f0da;
   --main-text-color: #111;
   --letter-tile-bg-color: #fee6e3;
   --letter-tile-border-color: #111;
@@ -13,4 +13,18 @@
   --result-tile-bg-color-loose: #aec6cf;
   --result-tile-bg-color-win: #77dd77;
   --active-switch-bg-color: #11111141;
+}
+
+body:has(.halloween-button.language-switcher__button--active) {
+  --body-bg-color: #000000;
+  --main-text-color: #f5f5f5;
+  --letter-tile-bg-color: #4b3621;
+  --letter-tile-border-color: #f5f5f5;
+  --letter-tile-shadow-color: #f5f5f5;
+  --letter-tile-wrong-bg-color: #9a0909;
+  --letter-tile-misplaced-bg-color: #cc5500;
+  --letter-tile-correct-bg-color: #228b22;
+  --cursor-bg-color: #f5f5f5;
+  --result-tile-bg-color-loose: #3d2b1f;
+  --result-tile-bg-color-win: #228b22;
 }
