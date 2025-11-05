@@ -1,5 +1,5 @@
 {
-  "failMessage" : "Nie tym razem... Spróbuj ponownie!",
+  "failMessage": "Nie tym razem... Spróbuj ponownie!",
   "winMessage": "Udało Ci się! Brawo!",
   "elo": "Elo mordo!",
   "playAgain": "Od nowa",
@@ -17,5 +17,10 @@
   "changeLanguageWarning": "Twoja aktualna gra zostanie zresetowana. Czy na pewno chcesz zmienić język?",
   "changeLanguageWarningTitle": "Uwaga!",
   "yes": "tak",
-  "no": "nie"
+  "no": "nie",
+  "startGame": "Rozpocznij grę",
+  "saveResult": "Zapisz wynik",
+  "time": "Czas",
+  "result": "Wynik",
+  "word": "Słowo"
 }

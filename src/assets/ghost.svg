@@ -1,0 +1,91 @@
+<svg
+  width="256"
+  height="256"
+  viewBox="0 0 256 256"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-labelledby="title desc"
+>
+  <title id="title">Funny Ghost</title>
+  <desc id="desc">A cute, funny ghost floating with a smile and tiny blush.</desc>
+
+  <!-- Gentle float animation -->
+  <g>
+    <animateTransform attributeName="transform" type="translate"
+      values="0 -3; 0 3; 0 -3" dur="3.5s" repeatCount="indefinite"/>
+    
+    <!-- Soft shadow (no background rectangle, so still transparent) -->
+    <ellipse cx="128" cy="210" rx="46" ry="10" fill="black" opacity="0.12">
+      <animate attributeName="opacity" values="0.12;0.06;0.12" dur="3.5s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- Ghost body -->
+    <path
+      d="M128 34
+         c-35 0-64 26-64 58
+         v42
+         c0 8 0 16 3 23
+         c3 7 9 11 16 10
+         c8-1 13-6 19-9
+         c6-3 13-3 19 0
+         c6 3 13 8 21 8
+         s15-5 21-8
+         c6-3 13-3 19 0
+         c6 3 11 8 19 9
+         c7 1 13-3 16-10
+         c3-7 3-15 3-23
+         v-42
+         c0-32-29-58-64-58z"
+      fill="#ffffff"
+      stroke="#0f0f0f"
+      stroke-width="4"
+      stroke-linejoin="round"
+    />
+
+    <!-- Wavy bottom -->
+    <path
+      d="M64 138
+         c9 9 18 13 27 13
+         s18-4 27-13
+         c9 9 18 13 27 13
+         s18-4 27-13
+         c9 9 18 13 27 13"
+      fill="none"
+      stroke="#0f0f0f"
+      stroke-width="4"
+      stroke-linecap="round"
+      opacity="0.35"
+    />
+
+    <!-- Eyes -->
+    <ellipse cx="103" cy="100" rx="9" ry="11" fill="#101010"/>
+    <ellipse cx="153" cy="100" rx="9" ry="11" fill="#101010"/>
+
+    <!-- Tiny eye highlight -->
+    <circle cx="100" cy="96" r="2" fill="#ffffff"/>
+    <circle cx="150" cy="96" r="2" fill="#ffffff"/>
+
+    <!-- Smile -->
+    <path d="M108 124
+             q20 16 40 0"
+          fill="none"
+          stroke="#101010"
+          stroke-width="4"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+
+    <!-- Blush -->
+    <ellipse cx="86" cy="118" rx="8" ry="5" fill="#ff7aa2" opacity="0.35"/>
+    <ellipse cx="170" cy="118" rx="8" ry="5" fill="#ff7aa2" opacity="0.35"/>
+
+    <!-- Cheeky little hand wave -->
+    <path d="M54 118
+             q-6 -8 2 -14
+             q8 -6 14 2
+             q6 8 -2 14"
+          fill="#ffffff"
+          stroke="#0f0f0f"
+          stroke-width="4"
+          stroke-linejoin="round"/>
+  </g>
+</svg>

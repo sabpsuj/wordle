@@ -1,0 +1,27 @@
+.result-card {
+  background: var(--body-bg-color);
+  border-radius: 8px;
+  padding: 20px;
+  width: 100%;
+  max-width: 520px;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 2px solid var(--letter-tile-border-color);
+
+  &__title {
+    margin-bottom: 20px;
+    color: var(--text-primary);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__stat {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin: 8px 0;
+  }
+}

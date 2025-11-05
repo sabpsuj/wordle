@@ -17,5 +17,10 @@
   "changeLanguageWarning": "Your current game will be reset. Are you sure you want to change the language?",
   "changeLanguageWarningTitle": "Warning!",
   "yes": "yes",
-  "no": "no"
+  "no": "no",
+  "startGame": "Start Game",
+  "saveResult": "Save Result",
+  "time": "Time",
+  "result": "Result",
+  "word": "Word"
 }
